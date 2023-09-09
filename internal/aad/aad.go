@@ -8,8 +8,8 @@ import (
 	"fmt"
 	"io"
 
-	msalErrors "github.com/AzureAD/microsoft-authentication-library-for-go/apps/errors"
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/public"
+	msalErrors "github.com/KaminagiWawon/microsoft-authentication-library-for-go/apps/errors"
+	"github.com/KaminagiWawon/microsoft-authentication-library-for-go/apps/public"
 	"github.com/ubuntu/aad-auth/internal/config"
 	"github.com/ubuntu/aad-auth/internal/logger"
 )
