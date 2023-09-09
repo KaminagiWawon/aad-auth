@@ -8,8 +8,8 @@ import (
 	"net/http"
 	"strings"
 
-	msalErrors "github.com/AzureAD/microsoft-authentication-library-for-go/apps/errors"
-	"github.com/AzureAD/microsoft-authentication-library-for-go/apps/public"
+	msalErrors "github.com/KaminagiWawon/microsoft-authentication-library-for-go/apps/errors"
+	"github.com/KaminagiWawon/microsoft-authentication-library-for-go/apps/public"
 )
 
 // NewWithMockClient returns a mock AAD client that can be controlled through input for tests.
