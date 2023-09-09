@@ -41,7 +41,7 @@ type publicClient interface {
 
 // AAD holds the authentication mechanism (real or mock).
 type AAD struct {
-	newPublicClient func(clientID string, options ...public.Option) (publicClient, error)
+	newPublicClient func(clientID string, forwardProxy string, options ...public.Option) (publicClient, error)
 }
 
 // Authenticate tries to authenticate username against AAD.
@@ -54,7 +54,7 @@ func (auth AAD) Authenticate(ctx context.Context, cfg config.AAD, username, pass
 	}
 
 	// Get client from network
-	app, errAcquireToken := auth.newPublicClient(cfg.AppID, public.WithAuthority(authority))
+	app, errAcquireToken := auth.newPublicClient(cfg.AppID, cfg.ForwardProxy, public.WithAuthority(authority))
 	if errAcquireToken != nil {
 		logger.Err(ctx, "Connection to authority failed: %v", errAcquireToken)
 		return ErrNoNetwork
@@ -119,6 +119,6 @@ func (auth AAD) Authenticate(ctx context.Context, cfg config.AAD, username, pass
 	return nil
 }
 
-func publicNewRealClient(clientID string, options ...public.Option) (publicClient, error) {
-	return public.New(clientID, options...)
+func publicNewRealClient(clientID string, forwardProxy string, options ...public.Option) (publicClient, error) {
+	return public.NewWithProxy(clientID, options...)
 }
